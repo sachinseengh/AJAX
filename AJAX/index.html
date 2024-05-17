@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Web Application</title>
+    
+    <script>
+        function fetch_user(){
+            var request = new XMLHttpRequest();
+            request.open("GET","data.txt");
+
+            request.onreadystatechange= function(){
+
+
+                if(this.readyState==4 && this.status==200){
+                    console.log(this.responseText);
+                    document.getElementById("result").innerHTML=this.responseText;
+                }
+                
+            };
+
+            request.send();
+            
+        }
+    </script>
+</head>
+<body>
+    <h1>AJAX and PHP Example</h1>
+    <button id="fetchBtn" onclick="fetch_user();">Fetch Users</button>
+    <div id="result"></div>
+</body>
+</html>
